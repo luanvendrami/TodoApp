@@ -10,7 +10,7 @@ namespace Dominio.Entidades
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataConclusão { get; set; }
+        public DateTime DataConclusao { get; set; }
         public bool TarefaConcluida { get; set; }
 
         public CadastroEntidades()
