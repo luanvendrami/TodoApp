@@ -20,7 +20,7 @@ namespace TodoApp.Controllers
             _todoAppService = todoAppService;
         }
 
-        //Metodo para buscar os cadastros pela data de conclusão, do mais próximo a esgotar(Data atual) para o com a data mais distante.
+        //EndPoint para buscar os cadastros pela data de conclusão, do mais próximo a esgotar(Data atual) para o com a data mais distante.
         [HttpGet("BuscaDataConclusao")]
         public ActionResult<List<CadastrarDto>> BuscaDataConclusao()
         {
@@ -35,7 +35,7 @@ namespace TodoApp.Controllers
             }
         }
 
-        //Metodo para salvar no banco o cadastro, o ID é gerado automaticamente na entidade do mesmo, como GUID.
+        //EndPoint para salvar no banco o cadastro, o ID é gerado automaticamente na entidade do mesmo, como GUID.
         [HttpPost("SalvarCadastro")]
         public ActionResult Salvar([FromForm]CadastrarDto model)
         {
@@ -50,7 +50,7 @@ namespace TodoApp.Controllers
             }          
         }
 
-        //Metodo que busca o cadastro pelo ID e altera a entidade de Tarefa.
+        //EndPoint que busca o cadastro pelo ID e altera a entidade de Tarefa.
         [HttpPut("AtualizarTarefa")]
         public ActionResult AlterarTarefa(Guid id, bool tarefa)
         {
