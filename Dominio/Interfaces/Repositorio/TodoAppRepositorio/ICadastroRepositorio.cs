@@ -10,5 +10,7 @@ namespace Dominio.Interfaces.Repositorio.TodoAppRepositorio
 {
     public interface ICadastroRepositorio : IBaseRepositorio<CadastroEntidades>
     {
+        CadastroEntidades RetornaId(Guid id);
+        List<CadastroEntidades> RetornaListaDataConclusao();
     }
 }
