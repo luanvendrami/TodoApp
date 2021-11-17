@@ -22,12 +22,7 @@ namespace Service
         {
             if (model.DataConclusao >= DateTime.Now)
             {
-                var entidadeCadastro = new CadastroEntidades
-                {
-                    Nome = model.Nome,
-                    DataConclusao = model.DataConclusao,
-                    TarefaConcluida = model.TarefaConcluida
-                };
+                var entidadeCadastro = new CadastroEntidades(model.Nome, model.DataConclusao, model.TarefaConcluida);
                 _cadastroRepositorio.Adicionar(entidadeCadastro);
             }
 
@@ -40,17 +35,18 @@ namespace Service
             return consultaRepositorio;  
         }
 
-        public void AlterarValorTarefa(Guid id, bool tarefa)
+        public string AlterarValorTarefa(Guid id, bool tarefa)
         {
-
             var consultaRepositorio = _cadastroRepositorio.RetornaId(id);
-            if (consultaRepositorio.TarefaConcluida != tarefa)
-            {
-                consultaRepositorio.TarefaConcluida = tarefa;
-                _cadastroRepositorio.Atualizar(consultaRepositorio);
-            }
 
+            if (consultaRepositorio.TarefaConcluida == tarefa)
+                return $"Tarefa com id: {id} está com o mesmo valor atual, verifique.";
+            else
+                consultaRepositorio.ValidaTarefa(tarefa);
+
+            _cadastroRepositorio.Atualizar(consultaRepositorio);
             _cadastroRepositorio.SalvarAlteracao();
+            return $"Tarefa com id: {id} foi alterada com sucesso.";
         }
     }
 }

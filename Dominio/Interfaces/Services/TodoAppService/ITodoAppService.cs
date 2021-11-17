@@ -12,6 +12,6 @@ namespace Dominio.Interfaces.Repositorio.TodoAppService
     {
         void SalvarCadastro(CadastrarDto model);
         List<CadastroEntidades> BuscarPorDataConclusao();
-        void AlterarValorTarefa(Guid id, bool tarefa);
+        string AlterarValorTarefa(Guid id, bool tarefa);
     }
 }

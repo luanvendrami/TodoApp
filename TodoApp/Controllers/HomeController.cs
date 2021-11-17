@@ -54,13 +54,13 @@ namespace TodoApp.Controllers
         [HttpPut("AtualizarTarefa")]
         public ActionResult AlterarTarefa(Guid id, bool tarefa)
         {
-            if (string.IsNullOrEmpty(id.ToString()))
+            if (!string.IsNullOrEmpty(id.ToString()))
             {
                 try
                 {
 
-                    _todoAppService.AlterarValorTarefa(id, tarefa);
-                    return Ok($"Tarefa com id: {id} foi alterada com sucesso.");
+                    var retorno = _todoAppService.AlterarValorTarefa(id, tarefa);
+                    return Ok(retorno);
                 }
 
                 catch (Exception)
